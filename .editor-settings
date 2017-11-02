@@ -1,0 +1,8 @@
+tabLength: 2
+softTabs: true
+grammarConfig:
+  'PHP':
+    tabLength: 4
+    softTabs: false
+    extensionConfig:
+      phtml:
