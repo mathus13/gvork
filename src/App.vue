@@ -1,18 +1,24 @@
 <template>
-  <div id="app">
-    <header>
-      <span>Vue.js PWA</span>
-    </header>
-    <main>
-      <img src="./assets/logo.png" alt="Vue.js PWA">
-      <router-view></router-view>
-    </main>
-  </div>
+<div id="app">
+  <header>
+    <span>GV Ork</span>
+    <Auth class="pull-right">??</Auth>
+  </header>
+  <main>
+    <img src="./assets/logo.png" alt="Vue.js PWA">
+    <router-view></router-view>
+  </main>
+</div>
 </template>
 
 <script>
+import Auth from './components/Auth'
+
 export default {
-  name: 'app'
+  name: 'app',
+  components: {
+    Auth: Auth
+  }
 }
 </script>
 
