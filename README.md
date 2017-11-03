@@ -1,6 +1,7 @@
 # gvork
 
-> Amtgard Ork
+> Amtgard Ork frontend
+> utilizing the orkservice api
 
 ## Build Setup
 
