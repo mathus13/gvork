@@ -18,10 +18,7 @@
 </template>
 
 <script>
-import {
-  mapGetters
-} from 'vuex'
-
+import {mapGetters} from 'vuex'
 export default {
   data () {
     return {
@@ -30,6 +27,7 @@ export default {
     }
   },
   computed: {
+    // user: this.$store.getUser()
     ...mapGetters({
       user: 'getUser'
     })
@@ -43,6 +41,9 @@ export default {
 
       })
     }
+  },
+  mounted () {
+    console.log(this.$store)
   }
 }
 </script>

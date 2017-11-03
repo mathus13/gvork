@@ -7,7 +7,15 @@ const state = {
 }
 
 const getters = {
-
+  getUserPersona () {
+    return (state.user.Persona) ? state.user.Persona : ''
+  },
+  getUserFullName () {
+    return `${state.user.GivenName} ${state.user.Surname}`
+  },
+  getUser () {
+    return state.user
+  }
 }
 
 const actions = {
@@ -34,8 +42,8 @@ const mutations = {
 }
 
 export default {
-  state,
-  getters,
-  actions,
-  mutations
+  state: state,
+  getters: getters,
+  actions: actions,
+  mutations: mutations
 }
