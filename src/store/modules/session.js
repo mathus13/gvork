@@ -1,4 +1,5 @@
 import auth from '../../services/api/authentication'
+import PubSub from 'pubsub-js'
 
 const state = {
   token: null,
@@ -28,6 +29,7 @@ const actions = {
         UserId: resp.data.UserId
       })
       commit('SET_TOKEN', resp.data.Token)
+      commit('SET_TIMEOUT', resp.data.Timeout)
     })
   }
 }
@@ -38,6 +40,9 @@ const mutations = {
   },
   SET_TOKEN (state, token) {
     state.token = token
+  },
+  SET_TIMEOUT (state, time) {
+    state.timeout = time
   }
 }
 
@@ -47,3 +52,7 @@ export default {
   actions: actions,
   mutations: mutations
 }
+
+PubSub.subscribe('session.authenticated', (payload) => {
+  mutations.SET_USER(state, payload.user)
+})

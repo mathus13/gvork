@@ -1,8 +1,10 @@
 <template>
 <div id="app">
   <header>
-    <span>GV Ork</span>
-    <Auth class="pull-right">??</Auth>
+    <nav class="navbar nav">
+      <span class="navbar-brand">GV Ork</span>
+      <Auth class="navbar-right navbar-form">??</Auth>
+    </nav>
   </header>
   <main>
     <img src="./assets/logo.png" alt="Vue.js PWA">
@@ -22,7 +24,8 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+$icon-font-path: "../../node_modules/bootstrap-sass/assets/fonts/bootstrap/";
 body {
   margin: 0;
 }
