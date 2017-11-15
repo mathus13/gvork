@@ -35,7 +35,7 @@ export default {
   },
   methods: {
     login () {
-      this.$store.dispatch('login', {
+      this.$store.dispatch('authenticate', {
         user: this.username,
         pass: this.password
       }).then((resp) => {

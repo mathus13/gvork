@@ -24,7 +24,7 @@ const actions = {
     commit,
     state
   }, data) {
-    auth.login(data.user, data.pass).then((resp) => {
+    return auth.login(data.user, data.pass).then((resp) => {
       commit('SET_USER', {
         UserId: resp.data.UserId
       })
