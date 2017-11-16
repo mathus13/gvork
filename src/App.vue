@@ -3,7 +3,7 @@
   <header>
     <nav class="navbar nav">
       <span class="navbar-brand">GV Ork</span>
-      <ul class="nav">
+      <ul class="nav navbar-nav">
         <li>
           <router-link to="kingdoms">Kingdoms</router-link>
         </li>
@@ -55,16 +55,19 @@ header {
     padding: 0 16px 0 24px;
     background-color: #35495E;
     color: #ffffff;
+    span {
+      display: block;
+      position: relative;
+      font-size: 20px;
+      line-height: 1;
+      letter-spacing: 0.02em;
+      font-weight: 400;
+      box-sizing: border-box;
+      padding-top: 16px;
+    }
+    nav a{
+      color: #fff;
+    }
 }
 
-header span {
-    display: block;
-    position: relative;
-    font-size: 20px;
-    line-height: 1;
-    letter-spacing: 0.02em;
-    font-weight: 400;
-    box-sizing: border-box;
-    padding-top: 16px;
-}
 </style>

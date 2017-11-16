@@ -20,5 +20,15 @@ export default {
         })
       }
     })
+  },
+  detail (id) {
+    return request({
+      params: {
+        request: {
+          KingdomId: id
+        },
+        call: 'Kingdom/GetKindomDetails'
+      }
+    })
   }
 }

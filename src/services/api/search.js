@@ -28,7 +28,7 @@ export default {
   },
   parks (params) {
     params = Object.assign({
-      Action: 'Search/Kingdom',
+      Action: 'Search/Park',
       limit: 300,
       name: ''
     }, params)
