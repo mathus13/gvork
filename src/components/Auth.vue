@@ -1,6 +1,6 @@
 <template>
 <div id="auth">
-  <div v-if="user.id">Welcome {{user.name}} </div>
+  <div v-if="user.UserId">Welcome {{user.name}} </div>
   <div v-else>
     <div class="form-group">
       <label for="username" class="sr-only">Username</label>
@@ -19,7 +19,6 @@
 
 <script>
 import {mapGetters} from 'vuex'
-import PubSub from 'pubsub-js'
 export default {
   data () {
     return {
@@ -38,13 +37,8 @@ export default {
       this.$store.dispatch('authenticate', {
         user: this.username,
         pass: this.password
-      }).then((resp) => {
-        PubSub.publish('session.user.auth', resp.data)
       })
     }
-  },
-  mounted () {
-    console.log(this.$store)
   }
 }
 </script>

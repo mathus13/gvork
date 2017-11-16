@@ -24,18 +24,19 @@ const actions = {
     commit,
     state
   }, data) {
-    return auth.login(data.user, data.pass).then((resp) => {
-      commit('SET_USER', {
-        UserId: resp.data.UserId
-      })
-      commit('SET_TOKEN', resp.data.Token)
-      commit('SET_TIMEOUT', resp.data.Timeout)
+    auth.login(data.user, data.pass)
+    PubSub.subscribe('session.authenticated', (topic, payload) => {
+      console.log(payload)
+      commit('SET_USER', payload.user)
+      commit('SET_TOKEN', payload.token)
+      commit('SET_TIMEOUT', payload.timeout)
     })
   }
 }
 
 const mutations = {
   SET_USER (state, user) {
+    console.log(state, user)
     state.user = user
   },
   SET_TOKEN (state, token) {
@@ -52,7 +53,3 @@ export default {
   actions: actions,
   mutations: mutations
 }
-
-PubSub.subscribe('session.authenticated', (payload) => {
-  mutations.SET_USER(state, payload.user)
-})

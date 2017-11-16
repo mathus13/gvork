@@ -19,6 +19,7 @@
     "bootstrap-sass": "^3.3.7",
     "node-sass": "^4.6.0",
     "pubsub-js": "^1.5.7",
+    "qs": "^6.5.1",
     "sass-loader": "^6.0.6",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",

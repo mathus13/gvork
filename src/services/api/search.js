@@ -3,30 +3,36 @@ import {
   request
 } from './settings'
 
+let config = {
+  url: searchurl
+}
 export default {
   players (params) {
     params = Object.assign({
-      call: 'Search/Player',
+      Action: 'Search/Player',
       limit: 300,
       search: '',
       type: 'all'
     }, params)
-    return request('get', searchurl, params)
+    config.params = params
+    return request(config)
   },
   kingdoms (params) {
     params = Object.assign({
-      call: 'Search/Kingdom',
+      Action: 'Search/Kingdom',
       limit: 300,
       name: ''
     }, params)
-    return request('get', searchurl, params)
+    config.params = params
+    return request(config)
   },
   parks (params) {
     params = Object.assign({
-      call: 'Search/Kingdom',
+      Action: 'Search/Kingdom',
       limit: 300,
       name: ''
     }, params)
-    return request('get', searchurl, params)
+    config.params = params
+    return request(config)
   }
 }
