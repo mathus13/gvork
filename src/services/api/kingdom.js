@@ -27,7 +27,7 @@ export default {
         request: {
           KingdomId: id
         },
-        call: 'Kingdom/GetKindomDetails'
+        call: 'Kingdom/GetKingdomDetails'
       }
     })
   }

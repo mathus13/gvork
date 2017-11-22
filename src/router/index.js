@@ -19,7 +19,7 @@ export default new Router({
       component: Kingdoms
     },
     {
-      path: '/parks',
+      path: '/parks[/:kingdomId?]',
       name: 'Parks',
       component: Parks
     }

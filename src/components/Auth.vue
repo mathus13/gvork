@@ -1,10 +1,10 @@
 <template>
 <div id="auth">
-  <div v-if="user.UserId">Welcome {{user.name}} </div>
+  <div v-if="user.UserId">Welcome {{user.Persona}} </div>
   <div v-else>
     <div class="form-group">
       <label for="username" class="sr-only">Username</label>
-      <input id="username" class="form-control" v-model="username" placeholder="username" />
+      <input name="username" class="form-control" v-model="username" placeholder="username" />
     </div>
     <div class="form-group">
       <label for="password" class="sr-only">Password</label>

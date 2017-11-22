@@ -6,16 +6,32 @@
 </template>
 <script>
 import Parks from '@/services/api/park'
+import Kingdoms from '@/services/api/kingdom'
+
+import {mapGetters} from 'vuex'
 export default {
-  props: ['kingdom'],
   data () {
     return {
-      parks: []
+      parks: [],
+      kingdom: {}
     }
   },
+  computed: {
+    kId () {
+      return (this.$route.params.kingdomId) ? this.$route.params.kingdomId : this.user.KingdomId
+    },
+    ...mapGetters({
+      user: 'getUser'
+    })
+  },
   watch: {
+    kId () {
+      Kingdoms.getKingdom(this.kId).then((resp) => {
+        this.kingdom = resp.data
+      })
+    },
     kingdom () {
-      Parks.getParks(this.kingdom.KingdomId).then((resp) => {
+      Parks.getParks(this.kingdom.KingdomInfo.KingdomId).then((resp) => {
         this.parks = resp.data.Parks
       })
     }
