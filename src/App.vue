@@ -7,6 +7,9 @@
         <li>
           <router-link to="kingdoms">Kingdoms</router-link>
         </li>
+        <li>
+          <router-link to="parks">Parks</router-link>
+        </li>
       </ul>
       <Auth class="navbar-right navbar-form">??</Auth>
     </nav>
