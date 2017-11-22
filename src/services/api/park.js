@@ -1,7 +1,7 @@
 import {
   request
 } from './settings'
-import PubSub from 'pubsub-js'
+// import PubSub from 'pubsub-js'
 export default {
   getPark (id) {
     return request({
@@ -23,6 +23,17 @@ export default {
       params: {
         call: 'Reports/GetActivePlayers',
         request: params
+      }
+    })
+  },
+  deleteAttendance (token, entryId) {
+    return request({
+      params: {
+        call: 'Attendence/RemoveAttendance',
+        request: {
+          Token: token,
+          AttendanceId: entryId
+        }
       }
     })
   },
