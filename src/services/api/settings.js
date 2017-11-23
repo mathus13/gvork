@@ -2,7 +2,7 @@ import Axios from 'axios'
 import PubSub from 'pubsub-js'
 import qs from 'qs'
 let baseurl = 'https://amtgard.com/ork/orkservice/'
-export const apiurl = baseurl + 'Json/index.php'
+export const apiurl = baseurl + 'Json'
 export const searchurl = baseurl + 'Search/SearchService.php'
 export let request = function (config) {
   config = Object.assign({

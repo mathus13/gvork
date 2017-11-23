@@ -4,9 +4,10 @@ import {
 // import PubSub from 'pubsub-js'
 export default {
   getPark (id) {
+    console.log(`calling ${id}`)
     return request({
       params: {
-        call: 'Park/GetPark',
+        call: 'Park/GetParkShortInfo',
         request: {
           ParkId: id
         }
@@ -17,11 +18,11 @@ export default {
     if (!params) {
       params = {}
     }
-    params.ParkId = park.ParkId
-    params.KingdomId = park.KingdomId
+    params.ParkId = park
+    console.log(params)
     return request({
       params: {
-        call: 'Reports/GetActivePlayers',
+        call: 'Report/GetActivePlayers',
         request: params
       }
     })
@@ -54,12 +55,12 @@ export default {
   },
   getParks (kingdom) {
     let params = {
-      call: 'Park/GetParks',
+      call: 'Kingdom/GetParks',
       request: {}
     }
     if (kingdom) {
       params.request.KingdomId = kingdom
     }
-    return request(params)
+    return request({params: params})
   }
 }

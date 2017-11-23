@@ -1,7 +1,7 @@
 <template>
 <div>
   <div class="panel panel-body col-md-3" v-for="kd in kingdoms">
-    {{ kd.KingdomName }}
+    <router-link :to="{ name: 'Parks', params: {kingdomId: kd.KingdomId}}">{{ kd.KingdomId }}: {{ kd.KingdomName }}</router-link>
   </div>
 </div>
 </template>

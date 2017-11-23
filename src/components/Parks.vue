@@ -1,7 +1,11 @@
 <template>
   <div>
-    <delete_me> I'm in your divs corrupting your data </delete_me>
-    <span class="h2">Parks in {{ kingdom.Name }}</span>
+    <span v-if="kingdom.KingdomInfo" class="h2">Parks in {{ kingdom.KingdomInfo.KingdomName }}</span>
+    <div class="row">
+      <div class="panel panel-body col-md-3" v-for="park in parks">
+        <router-link :to="{ name: 'Park', params: { parkId: parkId }}">The {{ park.Title }} of {{ park.Name }}</router-link>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -26,15 +30,30 @@ export default {
   },
   watch: {
     kId () {
-      Kingdoms.getKingdom(this.kId).then((resp) => {
+      console.log('get the kingdom')
+      this.getKingdom()
+    },
+    kingdom () {
+      this.getPark()
+    }
+  },
+  methods: {
+    getKingdom () {
+      return Kingdoms.detail(this.kId).then((resp) => {
         this.kingdom = resp.data
       })
     },
-    kingdom () {
-      Parks.getParks(this.kingdom.KingdomInfo.KingdomId).then((resp) => {
+    getPark () {
+      console.log('get the park')
+      return Parks.getParks(this.kingdom.KingdomInfo.KingdomId).then((resp) => {
         this.parks = resp.data.Parks
       })
     }
+  },
+  mounted () {
+    this.getKingdom().then(() => {
+      this.getPark()
+    })
   }
 }
 </script>

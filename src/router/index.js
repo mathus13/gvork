@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Hello from '@/components/Hello'
 import Kingdoms from '@/components/Kingdoms'
 import Parks from '@/components/Parks'
+import Park from '@/components/Park'
 
 Vue.use(Router)
 
@@ -19,9 +20,14 @@ export default new Router({
       component: Kingdoms
     },
     {
-      path: '/parks[/:kingdomId?]',
+      path: '/parks/:kingdomId?',
       name: 'Parks',
       component: Parks
+    },
+    {
+      path: '/park/:parkId?',
+      name: 'Park',
+      component: Park
     }
   ]
 })
