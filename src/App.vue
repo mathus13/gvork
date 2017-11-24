@@ -5,10 +5,10 @@
       <span class="navbar-brand">GV Ork</span>
       <ul class="nav navbar-nav">
         <li>
-          <router-link to="kingdoms">Kingdoms</router-link>
+          <router-link to="/kingdoms">Kingdoms</router-link>
         </li>
         <li>
-          <router-link to="parks">Parks</router-link>
+          <router-link to="/parks">Parks</router-link>
         </li>
       </ul>
       <Auth class="navbar-right navbar-form">??</Auth>

@@ -1,9 +1,12 @@
 <template>
   <div>
-    <h1>{{ park.Name }}</h1>
+    <h1>{{ park.ParkName }}</h1>
     <div class="col-md-2 list-group">
       <a class="list-group-item" href="#">Create Player</a>
       <a class="list-group-item" href="#">Attendance</a>
+      <div class="list-group-item">
+        Active Players
+      </div>
       <a class="list-group-item" href="#" @click="setPlayer(player)" v-for="player in players">{{ player.Persona }}</a>
     </div>
     <div class="col-md-10">

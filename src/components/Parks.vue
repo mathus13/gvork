@@ -1,9 +1,10 @@
 <template>
   <div>
+
     <span v-if="kingdom.KingdomInfo" class="h2">Parks in {{ kingdom.KingdomInfo.KingdomName }}</span>
     <div class="row">
       <div class="panel panel-body col-md-3" v-for="park in parks">
-        <router-link :to="{ name: 'Park', params: { parkId: parkId }}">The {{ park.Title }} of {{ park.Name }}</router-link>
+        <router-link :to="{ name: 'Park', params: { parkId: park.ParkId }}">The {{ park.Title }} of {{ park.Name }}</router-link>
       </div>
     </div>
   </div>
@@ -44,7 +45,7 @@ export default {
       })
     },
     getPark () {
-      console.log('get the park')
+      if (!this.kingdom.KingdomInfo) return
       return Parks.getParks(this.kingdom.KingdomInfo.KingdomId).then((resp) => {
         this.parks = resp.data.Parks
       })

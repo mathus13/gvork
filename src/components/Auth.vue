@@ -27,7 +27,6 @@ export default {
     }
   },
   computed: {
-    // user: this.$store.getUser()
     ...mapGetters({
       user: 'getUser'
     })

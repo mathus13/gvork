@@ -7,23 +7,18 @@
 </template>
 
 <script>
-import PubSub from 'pubsub-js'
-import kingdomApi from '@/services/api/kingdom'
+import {mapGetters} from 'vuex'
 export default {
-  data () {
-    return {
-      kingdoms: []
-    }
+  computed: {
+    ...mapGetters({
+      kingdoms: 'getKingdoms'
+    })
   },
   mounted () {
-    kingdomApi.fetch()
-    PubSub.subscribe('kingdoms.loaded', (topic, resp) => {
-      this.kingdoms = resp
-    })
+    this.$store.dispatch('getKingdoms')
   }
 }
 </script>
-
 <style>
 
 </style>
