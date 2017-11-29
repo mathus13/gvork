@@ -1,17 +1,25 @@
 <template>
 <div id="app">
   <header>
-    <nav class="navbar nav">
-      <span class="navbar-brand">GV Ork</span>
-      <ul class="nav navbar-nav">
-        <li>
-          <router-link to="/kingdoms">Kingdoms</router-link>
-        </li>
-        <li>
-          <router-link to="/parks">Parks</router-link>
-        </li>
-      </ul>
-      <Auth class="navbar-right navbar-form">??</Auth>
+    <nav class="navbar navbar-default">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-links" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">GV Ork</a>
+      </div>
+      <div class="collapse navbar-collapse" id="nav-links">
+        <ul class="nav navbar-nav">
+          <li>
+            <router-link to="/kingdoms">Kingdoms</router-link>
+          </li>
+          <li>
+            <router-link to="/parks">Parks</router-link>
+          </li>
+        </ul>
+        <Auth class="navbar-right navbar-form">??</Auth>
+      </div>
     </nav>
     <Alert></Alert>
   </header>
@@ -56,6 +64,10 @@ body {
     color: #2c3e50;
 }
 
+.navbar-default {
+  background-color: none;
+}
+
 main {
     text-align: center;
     margin-top: 40px;
@@ -79,6 +91,11 @@ header {
     }
     nav a{
       color: #fff;
+    }
+    .navbar-default {
+      background-color: inherit;
+      border: 0;
+      color: inherit;
     }
 }
 
