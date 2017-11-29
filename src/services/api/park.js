@@ -33,7 +33,8 @@ export default {
         call: 'Report/GetPlayerRoster',
         request: {
           Type: 'Park',
-          Id: park.ParkId
+          Id: park.ParkId,
+          Banned: 0
         }
       }
     })
@@ -51,8 +52,11 @@ export default {
   },
   addAttendance (token, date, classId, park, kingdom, credits) {
     return request({
+      method: 'post',
       params: {
-        call: 'Attendance/AddAttendance',
+        call: 'Attendance/AddAttendance'
+      },
+      data: {
         request: {
           Token: token,
           Date: date,
