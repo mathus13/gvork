@@ -27,6 +27,17 @@ export default {
       }
     })
   },
+  getPlayers (park, token) {
+    return request({
+      params: {
+        call: 'Report/GetPlayerRoster',
+        request: {
+          Type: 'Park',
+          Id: park.ParkId
+        }
+      }
+    })
+  },
   deleteAttendance (token, entryId) {
     return request({
       params: {
@@ -53,6 +64,17 @@ export default {
       }
     })
   },
+  getAttendance (park, date) {
+    return request({
+      params: {
+        call: 'Report/AttendanceForDate',
+        request: {
+          'Date': date,
+          ParkId: park.ParkId
+        }
+      }
+    })
+  },
   getParks (kingdom) {
     let params = {
       call: 'Kingdom/GetParks',
@@ -62,5 +84,15 @@ export default {
       params.request.KingdomId = kingdom
     }
     return request({params: params})
+  },
+  getClasses () {
+    return request({
+      params: {
+        call: 'Attendance/GetClasses',
+        request: {
+          'Active': 1
+        }
+      }
+    })
   }
 }

@@ -30,6 +30,15 @@ export default {
   components: {
     Auth: Auth,
     Alert: Alert
+  },
+  mounted () {
+    let timeout = new Date(localStorage.getItem('timeout'))
+    let now = new Date()
+    if (timeout > now) {
+      this.$store.commit('SET_USER', JSON.parse(localStorage.getItem('user')))
+      this.$store.commit('SET_TOKEN', localStorage.getItem('token'))
+      this.$store.commit('SET_TIMEOUT', timeout.toString())
+    }
   }
 }
 </script>

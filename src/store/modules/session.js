@@ -16,6 +16,9 @@ const getters = {
   },
   getUser () {
     return state.user
+  },
+  getToken () {
+    return state.token
   }
 }
 
@@ -36,14 +39,16 @@ const actions = {
 
 const mutations = {
   SET_USER (state, user) {
-    console.log(state, user)
     state.user = user
+    localStorage.setItem('user', JSON.stringify(user))
   },
   SET_TOKEN (state, token) {
     state.token = token
+    localStorage.setItem('token', token)
   },
   SET_TIMEOUT (state, time) {
     state.timeout = time
+    localStorage.setItem('timeout', time)
   }
 }
 
