@@ -34,6 +34,9 @@ const actions = {
       commit('SET_TOKEN', payload.token)
       commit('SET_TIMEOUT', payload.timeout)
     })
+  },
+  logout ({commit, state}) {
+    commit('LOGOUT')
   }
 }
 
@@ -49,6 +52,14 @@ const mutations = {
   SET_TIMEOUT (state, time) {
     state.timeout = time
     localStorage.setItem('timeout', time)
+  },
+  LOGOUT () {
+    state.user = {}
+    state.token = null
+    state.timeout = null
+    localStorage.removeItem('user')
+    localStorage.removeItem('token')
+    localStorage.removeItem('timeout')
   }
 }
 

@@ -1,15 +1,13 @@
 import {
-  searchurl,
   request
 } from './settings'
 
 let config = {
-  url: searchurl
 }
 export default {
   players (params) {
     params = Object.assign({
-      Action: 'Search/Player',
+      call: 'SearchService/Player',
       limit: 300,
       search: '',
       type: 'all'

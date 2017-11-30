@@ -50,22 +50,22 @@ export default {
       }
     })
   },
-  addAttendance (token, date, classId, park, kingdom, credits) {
+  addAttendance (token, date, classId, park, kingdom, credits, player) {
+    let data = new FormData()
+    data.append('call', 'Attendance/AddAttendance')
+    data.append('request[Token]', token)
+    data.append('request[Date]', date)
+    data.append('request[ClassId]', classId)
+    data.append('request[ParkId]', park)
+    data.append('request[KingdomId]', kingdom)
+    data.append('request[Credits]', credits)
+    data.append('request[MundaneId]', player)
     return request({
       method: 'post',
-      params: {
-        call: 'Attendance/AddAttendance'
+      headers: {
+        'Content-Type': 'multipart/form-data'
       },
-      data: {
-        request: {
-          Token: token,
-          Date: date,
-          ClassId: classId,
-          ParkId: park,
-          KingdomId: kingdom,
-          Credits: credits
-        }
-      }
+      data: data
     })
   },
   getAttendance (park, date) {

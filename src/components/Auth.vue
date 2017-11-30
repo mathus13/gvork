@@ -1,6 +1,15 @@
 <template>
 <div id="auth">
-  <div v-if="user.UserId">Welcome {{user.Persona}} </div>
+  <div v-if="user.UserId" class="navitar">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+      <img class="img-responsive img-circle" :src="'https:' + user.Image" :alt="'Welcome ' + user.Persona">
+    </a>
+    <ul class="dropdown-menu">
+      <li><router-link :to="{ name: 'Parks', params: {kingdomId: user.KingdomId}}">My Kingdom</router-link></li>
+      <li><router-link :to="{ name: 'Park', params: {parkId: user.ParkId}}">My Park</router-link></li>
+      <li><a href="#" @click="logout">logout</a></li>
+    </ul>
+  </div>
   <div v-else>
     <div class="form-group">
       <label for="username" class="sr-only">Username</label>
@@ -37,11 +46,16 @@ export default {
         user: this.username,
         pass: this.password
       })
+    },
+    logout () {
+      this.$store.dispatch('logout')
     }
   }
 }
 </script>
 
 <style>
-
+  .navitar {
+    width: 35px;
+  }
 </style>

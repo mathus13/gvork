@@ -1,12 +1,18 @@
 <template>
 <div class="search">
   <div class="form-group">
-    <input type="search" class="form-control" @keyup="query" v-model="term">
+    <input type="search" class="form-control" @keyup="query" v-model="term" placeholder="Search Players">
   </div>
   <div class="list-group">
     <div class="list-group-item" v-for="player in players">
-      <h6>{{player.Persona}}</h6>
-      <span>{{player.KingdomName}}:: {{player.ParkName}}</span>
+      <router-link :to="{ name: 'Player', params: { playerId: player.MundaneId, parkId: player.ParkId } }">
+        <p class="h3">{{ player.Persona }}</p>
+      </router-link>
+      <span class="text-muted">
+        <router-link :to="{ name: 'Parks', params: { kingdomId: player.KingdomId } }">{{player.KingdomName}}</router-link>
+        ::
+        <router-link :to="{ name: 'Park', params: { parkId: player.ParkId } }">{{player.ParkName}}</router-link>
+      </span>
     </div>
   </div>
 </div>
@@ -26,11 +32,7 @@ export default {
       search.players({
         search: this.term
       }).then((resp) => {
-        if (resp.data.Success === false) {
-
-        } else {
-          this.players = resp.data
-        }
+        this.players = resp.data.Result
       })
     }
   }

@@ -1,6 +1,6 @@
 <template>
-  <div class="hello">
-    <playerSearch></playerSearch>
+  <div class="hello container">
+    <playerSearch class="col-md-6"></playerSearch>
   </div>
 </template>
 

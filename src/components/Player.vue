@@ -1,7 +1,7 @@
 <template>
   <div class="panel panel-default">
     <div class="panel-heading">
-      <span class="h2">{{ player.Persona }}</span>
+      <span class="h2">{{ playerDetails.Persona }}</span>
     </div>
     <div class="panel-body">
       <div class="col-md-3">
@@ -23,18 +23,19 @@
           <dt>Email</dt>
           <dd><a :href="'mailto:' + playerDetails.Email">{{ playerDetails.Email }}</a></dd>
           <dt>Kingdom</dt>
-          <dd>{{ playerDetails.KingdomName }}</dd>
+          <dd><router-link :to="{ name: 'Parks', params: { kingdomId: playerDetails.KingdomId } }">{{playerDetails.KingdomName}}</router-link></dd>
           <dt>Park</dt>
-          <dd>{{ playerDetails.ParkName }}</dd>
+          <dd><router-link :to="{ name: 'Park', params: { parkId: playerDetails.ParkId } }">{{playerDetails.ParkName}}</router-link></dd>
         </dl>
       </div>
-      <Classes class="col-md-4" :player="player"></Classes>
+      <Classes class="col-md-4" :player="playerDetails"></Classes>
     </div>
   </div>
 </template>
 
 <script>
 import Players from '@/services/api/player'
+import Parks from '@/services/api/park'
 import {mapGetters} from 'vuex'
 import Classes from './Class'
 export default {
@@ -55,9 +56,24 @@ export default {
   methods: {
     getPlayer () {
       let token = this.token
-      Players.getPlayer(this.player, token).then((resp) => {
-        this.playerDetails = Object.assign(this.player, resp.data.Player)
-      })
+      let player = {}
+      if (!this.player && this.$route.params.playerId) {
+        Parks.getPark(this.$route.params.parkId).then(resp => {
+          player.MundaneId = this.$route.params.playerId
+          player.ParkName = resp.data.ParkInfo.ParkName
+          player.ParkId = resp.data.ParkInfo.ParkId
+          player.KingdomName = resp.data.KingdomInfo.KingdomName
+          player.KingdomId = resp.data.KingdomInfo.KingdomId
+          Players.getPlayer(player, token).then((resp) => {
+            this.playerDetails = Object.assign(player, resp.data.Player)
+          })
+        })
+      } else {
+        player = this.player
+        Players.getPlayer(player, token).then((resp) => {
+          this.playerDetails = Object.assign(player, resp.data.Player)
+        })
+      }
     }
   },
   watch: {

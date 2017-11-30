@@ -63,6 +63,7 @@ import {mapGetters} from 'vuex'
 import Parks from '@/services/api/park'
 import Collections from 'lodash/collection'
 import Moment from 'moment'
+import PubSub from 'pubsub-js'
 export default {
   props: ['park'],
   data () {
@@ -91,7 +92,31 @@ export default {
   methods: {
     send () {
       let date = Moment(this.date)
-      Parks.addAttendance(this.token, date.format('Y-MM-DD'), this.classId, this.parkId, this.kingdomId, this.credits)
+      Parks.addAttendance(
+        this.token,
+        date.format('Y-MM-DD'),
+        this.classId,
+        this.parkId,
+        this.kingdomId,
+        this.credits,
+        this.playerId
+      ).then(resp => {
+        if (resp.data.Error === 'Success') {
+          PubSub.publish('alerts.add', {
+            key: 'addattendance',
+            message: 'Attendance Added',
+            timestamp: Date().toString(),
+            type: 'success'
+          })
+        } else {
+          PubSub.publish('alerts.add', {
+            key: 'addattendance',
+            message: 'Error adding attendance',
+            timestamp: Date().toString(),
+            type: 'warning'
+          })
+        }
+      })
     },
     getParks () {
       Parks.getParks(this.kingdomId).then((resp) => {

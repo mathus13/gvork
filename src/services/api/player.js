@@ -4,11 +4,12 @@ import {
 // import PubSub from 'pubsub-js'
 export default {
   getPlayer (player, token) {
+    let id = (typeof player === 'object') ? player.MundaneId : player
     return request({
       params: {
         call: 'Player/GetPlayer',
         request: {
-          MundaneId: player.MundaneId,
+          MundaneId: id,
           Token: token
         }
       }

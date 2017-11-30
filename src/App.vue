@@ -7,7 +7,7 @@
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">GV Ork</a>
+        <router-link :to="{ name: 'Hello' }">GV Ork</router-link>
       </div>
       <div class="collapse navbar-collapse" id="nav-links">
         <ul class="nav navbar-nav">
@@ -95,7 +95,17 @@ header {
     .navbar-default {
       background-color: inherit;
       border: 0;
-      color: inherit;
+      color: #f5f5f5;
+      .navbar-brand {
+        color: #fff;
+      }
+      .navbar-nav {
+        li {
+          a {
+            color: #f5f5f5;
+          }
+        }
+      }
     }
 }
 

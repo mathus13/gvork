@@ -4,6 +4,7 @@ import Hello from '@/components/Hello'
 import Kingdoms from '@/components/Kingdoms'
 import Parks from '@/components/Parks'
 import Park from '@/components/Park'
+import Player from '@/components/Player'
 
 Vue.use(Router)
 
@@ -25,9 +26,14 @@ export default new Router({
       component: Parks
     },
     {
-      path: '/park/:parkId?',
+      path: '/park/:parkId',
       name: 'Park',
       component: Park
+    },
+    {
+      path: '/player/:playerId/:parkId?/:kingdonId?',
+      name: 'Player',
+      component: Player
     }
   ]
 })
