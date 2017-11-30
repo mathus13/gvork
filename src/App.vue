@@ -7,7 +7,7 @@
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar"></span>
         </button>
-        <router-link :to="{ name: 'Hello' }">GV Ork</router-link>
+        <router-link :to="{ name: 'Hello' }" class="navbar-brand">GV Ork</router-link>
       </div>
       <div class="collapse navbar-collapse" id="nav-links">
         <ul class="nav navbar-nav">
@@ -23,7 +23,7 @@
     </nav>
     <Alert></Alert>
   </header>
-  <main>
+  <main class="container">
     <router-view></router-view>
   </main>
 </div>
@@ -106,6 +106,9 @@ header {
           }
         }
       }
+    }
+    #nav-links {
+      z-index: 90000;
     }
 }
 
