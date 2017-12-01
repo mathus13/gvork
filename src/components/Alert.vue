@@ -27,7 +27,7 @@ export default {
       }
       this.alerts.push(alert)
       setTimeout(() => {
-        // this.clearAlert(alert)
+        this.clearAlert(alert)
       }, 15000)
     },
     clearAlert (alert) {

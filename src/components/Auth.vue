@@ -5,8 +5,9 @@
       <img class="img-responsive img-circle" :src="'https:' + user.Image" :alt="'Welcome ' + user.Persona">
     </a>
     <ul class="dropdown-menu">
-      <li><router-link :to="{ name: 'Parks', params: {kingdomId: user.KingdomId}}">My Kingdom</router-link></li>
+      <li><router-link :to="{ name: 'Player', params: { parkId: user.ParkId, playerId: user.MundaneId }}">Me</router-link></li>
       <li><router-link :to="{ name: 'Park', params: {parkId: user.ParkId}}">My Park</router-link></li>
+      <li><router-link :to="{ name: 'Parks', params: {kingdomId: user.KingdomId}}">My Kingdom</router-link></li>
       <li><a href="#" @click="logout">logout</a></li>
     </ul>
   </div>

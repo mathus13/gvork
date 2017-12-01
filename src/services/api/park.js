@@ -3,11 +3,20 @@ import {
 } from './settings'
 // import PubSub from 'pubsub-js'
 export default {
-  getPark (id) {
-    console.log(`calling ${id}`)
+  getParkShort (id) {
     return request({
       params: {
         call: 'Park/GetParkShortInfo',
+        request: {
+          ParkId: id
+        }
+      }
+    })
+  },
+  getPark (id) {
+    return request({
+      params: {
+        call: 'Park/GetParkDetails',
         request: {
           ParkId: id
         }

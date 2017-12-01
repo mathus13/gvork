@@ -12,7 +12,6 @@ export let request = function (config) {
       return qs.stringify(params)
     }
   }, config)
-  console.log(config)
   return Axios(config).catch((error) => {
     if (error.response && error.response.status === 401) {
       PubSub.publish('session.end')

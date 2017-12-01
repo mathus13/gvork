@@ -4,7 +4,8 @@ import PubSub from 'pubsub-js'
 const state = {
   token: null,
   user: {},
-  timeout: null
+  timeout: null,
+  authorizations: []
 }
 
 const getters = {
@@ -19,6 +20,9 @@ const getters = {
   },
   getToken () {
     return state.token
+  },
+  getAuthorizations (state) {
+    return state.authorizations
   }
 }
 
@@ -33,6 +37,15 @@ const actions = {
       commit('SET_USER', payload.user)
       commit('SET_TOKEN', payload.token)
       commit('SET_TIMEOUT', payload.timeout)
+      let authorizations = localStorage.getItem('authorizations')
+      console.log(authorizations)
+      if (authorizations) {
+        commit('SET_AUTH', authorizations)
+      } else {
+        auth.getAuthorizations(state.user).then(resp => {
+          commit('SET_AUTH', resp.data.Authorizations)
+        })
+      }
     })
   },
   logout ({commit, state}) {
@@ -60,6 +73,11 @@ const mutations = {
     localStorage.removeItem('user')
     localStorage.removeItem('token')
     localStorage.removeItem('timeout')
+    localStorage.removeItem('authorizations')
+  },
+  SET_AUTH (state, auth) {
+    state.authorizations = auth
+    localStorage.setItem('authorizations', JSON.stringify(auth))
   }
 }
 

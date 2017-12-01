@@ -17,6 +17,7 @@
     "axios": "^0.17.0",
     "bootstrap": "^3.3.7",
     "bootstrap-sass": "^3.3.7",
+    "ejs": "^2.5.7",
     "jquery": "^3.2.1",
     "moment": "^2.19.2",
     "node-sass": "^4.6.0",
@@ -25,6 +26,8 @@
     "sass-loader": "^6.0.6",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
+    "vue2-google-maps": "^0.8.4",
+    "vuelidate": "^0.6.1",
     "vuex": "^3.0.1"
   },
   "devDependencies": {

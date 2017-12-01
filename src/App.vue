@@ -44,6 +44,7 @@ export default {
     let now = new Date()
     if (timeout > now) {
       this.$store.commit('SET_USER', JSON.parse(localStorage.getItem('user')))
+      this.$store.commit('SET_AUTH', JSON.parse(localStorage.getItem('authorizations')))
       this.$store.commit('SET_TOKEN', localStorage.getItem('token'))
       this.$store.commit('SET_TIMEOUT', timeout.toString())
     }

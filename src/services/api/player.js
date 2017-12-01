@@ -38,11 +38,11 @@ export default {
     })
   },
   addUser (player, token) {
-    let params = Object.assign({ Token: token }, player)
+    player.token = token
     return request({
       params: {
         call: 'Player/CreatePlayer',
-        request: params
+        request: player
       }
     })
   }

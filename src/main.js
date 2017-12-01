@@ -4,6 +4,10 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import Store from './store'
+import Vuelidate from 'vuelidate'
+
+Vue.use(Vuelidate)
+
 require('bootstrap')
 require('../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss')
 

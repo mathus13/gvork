@@ -111,7 +111,7 @@ export default {
         } else {
           PubSub.publish('alerts.add', {
             key: 'addattendance',
-            message: 'Error adding attendance',
+            message: 'Error adding attendance: ' + resp.data.Error,
             timestamp: Date().toString(),
             type: 'warning'
           })

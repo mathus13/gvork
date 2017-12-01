@@ -47,5 +47,15 @@ export default {
         })
       }
     })
+  },
+  getAuthorizations (user) {
+    return request({
+      params: {
+        call: 'Authorization/GetAuthorizations',
+        request: {
+          MundaneId: user.MundaneId
+        }
+      }
+    })
   }
 }
