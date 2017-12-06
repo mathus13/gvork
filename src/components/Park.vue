@@ -13,6 +13,9 @@
       <div v-if="start">
         <Mapbox v-if="park.Location" :geoData="park.Location" class="col-md-5"></Mapbox>
         <div class="col-md-7 panel panel-default panel-body text-left">
+          <div v-if="park.HasHeraldry" class="col-md-2 pull-left">
+            <img :src="heraldryUrl" class="img-responsive img-rounded">
+          </div>
           <p>{{ park.Description }}</p>
           <p>{{ park.Directions }}</p>
           <p>
@@ -21,6 +24,14 @@
           <p>
             <a :href="park.MapUrl" target="_blank">Google Map</a>
           </p>
+          <table class="table table-striped">
+            <tbody>
+              <tr v-for="officer in officers">
+                <th>{{ officer.OfficerRole }}</th>
+                <td>{{ officer.Persona }}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
       <Attendance v-if="showAttendance" :park="park"></Attendance>
@@ -45,7 +56,8 @@ export default {
       park: {},
       showAttendance: false,
       addUser: false,
-      start: true
+      start: true,
+      officers: []
     }
   },
   components: {
@@ -58,8 +70,14 @@ export default {
     canEdit () {
       let search = {'Type': 'Park', 'Id': this.park.ParkId}
       let match = Collection.filter(this.authorizations, search)
-      console.log(search, match, this.authorizations)
       return (match && match.length > 0)
+    },
+    heraldryUrl () {
+      let imageId = this.park.ParkId
+      while (imageId.length < 7) {
+        imageId = '0' + imageId
+      }
+      return `https//amtgard.com/ork/assets/heraldry/park/${imageId}.jpg`
     },
     ...mapGetters({
       user: 'getUser',
@@ -77,6 +95,7 @@ export default {
           resp.data.Location = JSON.parse(resp.data.Location)
           let park = Object.assign(this.park, resp.data)
           this.park = park
+          this.getOfficers()
         }
       })
     })
@@ -102,6 +121,14 @@ export default {
       this.showAttendance = false
       this.player = false
       this.start = false
+    },
+    getOfficers () {
+      Parks.getOfficers(this.park).then(resp => {
+        if (!resp.data.Officers) {
+          return
+        }
+        this.officers = resp.data.Officers
+      })
     }
   }
 }

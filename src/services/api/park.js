@@ -23,12 +23,21 @@ export default {
       }
     })
   },
+  getOfficers (park) {
+    return request({
+      params: {
+        call: 'Park/GetOfficers',
+        request: {
+          ParkId: park.ParkId
+        }
+      }
+    })
+  },
   getActivePlayers (park, params) {
     if (!params) {
       params = {}
     }
     params.ParkId = park
-    console.log(params)
     return request({
       params: {
         call: 'Report/GetActivePlayers',
@@ -96,7 +105,9 @@ export default {
     if (kingdom) {
       params.request.KingdomId = kingdom
     }
-    return request({params: params})
+    return request({
+      params: params
+    })
   },
   getClasses () {
     return request({
