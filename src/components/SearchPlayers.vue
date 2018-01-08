@@ -21,6 +21,9 @@
 <script>
 import search from '../services/api/search'
 export default {
+  props: [
+    'park'
+  ],
   data () {
     return {
       players: [],
@@ -30,6 +33,7 @@ export default {
   methods: {
     query () {
       search.players({
+        park_id: this.park,
         search: this.term
       }).then((resp) => {
         this.players = resp.data.Result

@@ -11,6 +11,7 @@
     </div>
     <div class="col-md-10">
       <div v-if="start">
+        <playerSearch :park="park.ParkId"></playerSearch>
         <Mapbox v-if="park.Location" :geoData="park.Location" class="col-md-5"></Mapbox>
         <div class="col-md-7 panel panel-default panel-body text-left">
           <div v-if="park.HasHeraldry" class="col-md-2 pull-left">
@@ -45,6 +46,7 @@ import Parks from '@/services/api/park'
 import Player from './Player'
 import Attendance from './Attendance'
 import UserForm from './UserForm'
+import PlayerSearch from './SearchPlayers'
 import Map from './Map'
 import { mapGetters } from 'vuex'
 import Collection from 'lodash/collection'
@@ -61,6 +63,7 @@ export default {
     }
   },
   components: {
+    playerSearch: PlayerSearch,
     Player: Player,
     Attendance: Attendance,
     Mapbox: Map,

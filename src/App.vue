@@ -17,6 +17,9 @@
           <li>
             <router-link to="/parks">Parks</router-link>
           </li>
+          <li>
+            <router-link to="/attendance">Attendance</router-link>
+          </li>
         </ul>
         <Auth class="navbar-right navbar-form">??</Auth>
       </div>
@@ -63,6 +66,9 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: #2c3e50;
+    h1, h2, h3, h4, label {
+      color: #281722;
+    }
 }
 
 .navbar-default {
@@ -79,6 +85,7 @@ header {
     height: 56px;
     padding: 0 16px 0 24px;
     background-color: #35495E;
+    background-color: #db92c0;
     color: #ffffff;
     span {
       display: block;
@@ -90,8 +97,10 @@ header {
       box-sizing: border-box;
       padding-top: 16px;
     }
-    nav a{
-      color: #fff;
+    nav {
+      a{
+        color: #fff;
+      }
     }
     .navbar-default {
       background-color: inherit;
@@ -104,6 +113,7 @@ header {
         li {
           a {
             color: #f5f5f5;
+            color: #3D2333;
           }
         }
       }

@@ -119,13 +119,16 @@ export default {
       })
     },
     getParks () {
+      if (!this.kingdomId) {
+        return []
+      }
       Parks.getParks(this.kingdomId).then((resp) => {
         this.parks = resp.data.Parks
       })
     },
     getPlayers () {
       if (!this.activePark) {
-        return
+        return []
       }
       Parks.getPlayers(this.activePark, this.token).then((resp) => {
         this.players = resp.data.Roster
@@ -161,9 +164,11 @@ export default {
     }
   },
   mounted () {
-    this.parks.push(this.park)
-    this.kingdomId = this.park.KingdomId
-    this.parkId = this.park.ParkId
+    if (this.park) {
+      this.parks.push(this.park)
+      this.kingdomId = this.park.KingdomId
+      this.parkId = this.park.ParkId
+    }
     this.getParks()
     this.getPlayers()
     this.$store.dispatch('getKingdoms')
