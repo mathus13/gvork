@@ -1,2 +1,5 @@
 tabLength: 2
 softTabs: true
+grammarConfig:
+  'PHP':
+    tabLength: 4

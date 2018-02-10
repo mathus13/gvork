@@ -2,10 +2,32 @@
     "name": "ethereal/gvork",
     "description": "Alternative frontend for the Amtgard Online Record Keeper",
     "type": "project",
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://git.etherealvisions.us/mathus13/SimpleTable.git"
+        },
+        {
+            "type": "git",
+            "url": "https://git.etherealvisions.us/mathus13/SimpleHooks.git"
+        },
+        {
+            "type": "git",
+            "url": "https://git.etherealvisions.us/mathus13/SimpleConfig.git"
+        },
+        {
+            "type": "git",
+            "url": "https://git.etherealvisions.us/mathus13/SimpleCache.git"
+        }
+    ],
     "require": {
         "slim/slim": "^3.9",
         "pimple/pimple": "^3.2",
-        "monolog/monolog": "^1.23"
+        "monolog/monolog": "^1.23",
+        "ethereal/SimpleHooks": "dev-master",
+        "ethereal/SimpleTable": "dev-master",
+        "ramsey/uuid": "^3.1",
+        "doctrine/couchdb": "^1.0@beta"
     },
     "license": "MIT",
     "authors": [
@@ -14,5 +36,10 @@
             "email": "mathus13@gmail.com"
         }
     ],
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "Gvork\\": "lib"
+        }
+    }
 }
