@@ -2,6 +2,7 @@
 
 > Amtgard Ork frontend
 > utilizing the orkservice api
+> GvOrk has been merged with GvEvents and is now housed in gitlab at https://git.etherealvisions.us/mathus13/gvevents
 
 ## Build Setup
 
